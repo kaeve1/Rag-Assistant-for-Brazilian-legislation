@@ -1,0 +1,11 @@
+.env
+.env.example
+.git
+__pycache__/
+*.pyc
+data/index/
+data/processed/
+logs/
+eval/
+.firecrawl/
+README.md

@@ -1,0 +1,186 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-14T00:00:00Z",
+  "title": "Design System: Ragis",
+  "extensions": {
+    "colorMeta": {
+      "paper": { "role": "neutral", "displayName": "Paper", "canonical": "#FFFFFF", "tonalRamp": ["#26262A", "#3B3B40", "#525258", "#6B6B71", "#8A8A90", "#AEAEB3", "#D4D4D8", "#FFFFFF"] },
+      "paper-soft": { "role": "neutral", "displayName": "Soft Paper", "canonical": "#F5F5F3", "tonalRamp": ["#24241F", "#39392F", "#4F4F43", "#6A6A5C", "#8C8C7E", "#B3B3A5", "#D6D6CC", "#F5F5F3"] },
+      "rule": { "role": "neutral", "displayName": "Hairline", "canonical": "#E2E2DD", "tonalRamp": ["#232320", "#38382F", "#4E4E43", "#68685C", "#8A8A7E", "#AFAFA4", "#CACAC2", "#E2E2DD"] },
+      "rule-strong": { "role": "neutral", "displayName": "Hairline Strong", "canonical": "#C9C9C2", "tonalRamp": ["#1F1F1C", "#32322C", "#46463E", "#5F5F55", "#7E7E73", "#9F9F95", "#C9C9C2", "#E8E8E3"] },
+      "ink": { "role": "neutral", "displayName": "Ink", "canonical": "#16171B", "tonalRamp": ["#16171B", "#2A2B31", "#3E4048", "#545762", "#6E727E", "#8E919B", "#B4B6BD", "#DCDDE1"] },
+      "ink-muted": { "role": "neutral", "displayName": "Muted Ink", "canonical": "#5A5E6B", "tonalRamp": ["#17181C", "#23252B", "#31343C", "#42454F", "#5A5E6B", "#7C808C", "#A3A6AF", "#CDCFD4"] },
+      "ink-faint": { "role": "neutral", "displayName": "Faint Ink", "canonical": "#666A77", "tonalRamp": ["#1A1B1F", "#26282E", "#34363E", "#464952", "#666A77", "#878B96", "#ABAEB6", "#D2D4D8"] },
+      "accent": { "role": "primary", "displayName": "Deep Magenta Ink", "canonical": "#B3164F", "tonalRamp": ["#2C0513", "#490A20", "#67102E", "#8B133D", "#B3164F", "#D93E72", "#EC85A5", "#FBEEF3"] },
+      "accent-soft": { "role": "primary", "displayName": "Magenta Tint", "canonical": "#FBEEF3", "tonalRamp": ["#2C0513", "#490A20", "#67102E", "#8B133D", "#B3164F", "#D93E72", "#EC85A5", "#FBEEF3"] },
+      "danger": { "role": "tertiary", "displayName": "Alert Red", "canonical": "#A3231C", "tonalRamp": ["#290906", "#440D0A", "#5F1410", "#821B16", "#A3231C", "#C9463E", "#E38B85", "#FCEFEE"] },
+      "danger-bg": { "role": "tertiary", "displayName": "Alert Wash", "canonical": "#FCEFEE", "tonalRamp": ["#290906", "#440D0A", "#5F1410", "#821B16", "#A3231C", "#C9463E", "#E38B85", "#FCEFEE"] },
+      "ok": { "role": "tertiary", "displayName": "Clear Green", "canonical": "#14663F", "tonalRamp": ["#04180E", "#072818", "#0B3B24", "#0F5032", "#14663F", "#248B5B", "#5FB68B", "#EBF5EF"] },
+      "ok-bg": { "role": "tertiary", "displayName": "Clear Wash", "canonical": "#EBF5EF", "tonalRamp": ["#04180E", "#072818", "#0B3B24", "#0F5032", "#14663F", "#248B5B", "#5FB68B", "#EBF5EF"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "The single page headline in the first viewport. One per page." },
+      "headline": { "displayName": "Headline", "purpose": "The three section titles: coverage, pipeline, stack." },
+      "title": { "displayName": "Area Title", "purpose": "The name of each of the seven area panels." },
+      "subtitle": { "displayName": "Cell Heading", "purpose": "Headings inside ruled grid cells (step and tech names)." },
+      "body": { "displayName": "Body", "purpose": "Lead paragraphs and card prose. Measure capped 42ch to 58ch." },
+      "body-small": { "displayName": "Body Small", "purpose": "Grid cell copy, source snippets, drawer rows, violation reasons." },
+      "label": { "displayName": "Mono Label", "purpose": "Uppercase tracked mono for field labels, step names, footer links, the history pill." },
+      "meta": { "displayName": "Mono Meta", "purpose": "Article counts, retrieval scores, confidence, citation footer, metric keys." },
+      "readout": { "displayName": "Mono Readout", "purpose": "Evaluation metric values, tabular numerals." }
+    },
+    "shadows": [
+      { "name": "floating-control", "value": "0 8px 20px -8px rgba(22, 23, 27, 0.45)", "purpose": "The fixed history pill at rest. Only fixed elements cast shadow." },
+      { "name": "floating-control-raised", "value": "0 12px 26px -10px rgba(22, 23, 27, 0.55)", "purpose": "The history pill on hover." },
+      { "name": "drawer-edge", "value": "-20px 0 44px -28px rgba(22, 23, 27, 0.5)", "purpose": "Separates the right drawer from the page beneath it." },
+      { "name": "focus-halo", "value": "0 0 0 4px #FBEEF3", "purpose": "Tint ring around the input pill on focus-within. A ring, not a glow." }
+    ],
+    "motion": [
+      { "name": "ease-out", "value": "cubic-bezier(0.16, 1, 0.3, 1)", "purpose": "The only easing curve in the system. Every transition uses it." },
+      { "name": "duration-quick", "value": "0.15s", "purpose": "Row hovers, send button scale." },
+      { "name": "duration-state", "value": "0.2s to 0.25s", "purpose": "Border, color and background state changes; rail and backdrop." },
+      { "name": "duration-drawer", "value": "0.28s", "purpose": "Drawer slide in and out." },
+      { "name": "duration-focus-fade", "value": "0.5s", "purpose": "Area panel opacity resolve in the scroll sequence." },
+      { "name": "spinner", "value": "spin 0.8s linear infinite", "purpose": "Send button loading state." },
+      { "name": "reduced-motion", "value": "prefers-reduced-motion: reduce collapses all transitions to 0.01ms, disables smooth scroll, and sets every area panel to opacity 1", "purpose": "No effect in this system is load-bearing for legibility." }
+    ],
+    "breakpoints": [
+      { "name": "rail-collapse", "value": "900px" },
+      { "name": "compact", "value": "560px" }
+    ],
+    "layout": [
+      { "name": "page-max", "value": "1140px" },
+      { "name": "answer-column", "value": "680px" },
+      { "name": "hero-max", "value": "880px" },
+      { "name": "section-pad-top", "value": "112px (84px under 900px)" },
+      { "name": "gutter", "value": "24px (16px under 560px)" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Input Pill",
+      "kind": "input",
+      "refersTo": "input-pill",
+      "description": "The capsule question field with its flat accent send button. Autogrows to a 160px ceiling; Enter submits.",
+      "html": "<div class=\"ds-input-pill\"><textarea rows=\"1\" placeholder=\"Descreva o que aconteceu…\" aria-label=\"Descreva a situação\"></textarea><button class=\"ds-btn-send\" type=\"button\" aria-label=\"Analisar situação\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M5 12h13M12 5l7 7-7 7\"/></svg></button></div>",
+      "css": ".ds-input-pill { display: flex; align-items: flex-end; gap: 8px; max-width: 680px; background: #FFFFFF; border: 1px solid #C9C9C2; border-radius: 26px; padding: 8px 8px 8px 20px; transition: border-color 0.2s cubic-bezier(0.16,1,0.3,1), box-shadow 0.2s cubic-bezier(0.16,1,0.3,1); } .ds-input-pill:focus-within { border-color: #B3164F; box-shadow: 0 0 0 4px #FBEEF3; } .ds-input-pill textarea { flex: 1; resize: none; border: none; background: none; color: #16171B; font-family: 'IBM Plex Sans', sans-serif; font-size: 0.97rem; line-height: 1.5; padding: 9px 0; max-height: 170px; outline: none; } .ds-input-pill textarea::placeholder { color: #666A77; } .ds-btn-send { flex-shrink: 0; width: 40px; height: 40px; border-radius: 50%; border: none; background: #B3164F; color: #FFFFFF; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: transform 0.15s cubic-bezier(0.16,1,0.3,1), background 0.2s cubic-bezier(0.16,1,0.3,1); } .ds-btn-send svg { width: 17px; height: 17px; } .ds-btn-send:hover:not(:disabled) { transform: scale(1.06); background: #16171B; } .ds-btn-send:focus-visible { outline: 2px solid #B3164F; outline-offset: 3px; } .ds-btn-send:disabled { opacity: 0.45; cursor: default; }"
+    },
+    {
+      "name": "Example Chip",
+      "kind": "chip",
+      "refersTo": "chip",
+      "description": "A prefilled situation the reader can fire straight into the tool. Action only, no selected state.",
+      "html": "<button class=\"ds-chip\" type=\"button\">Demissão sem verbas</button>",
+      "css": ".ds-chip { background: #FFFFFF; border: 1px solid #E2E2DD; color: #5A5E6B; padding: 7px 14px; border-radius: 999px; font-family: 'IBM Plex Sans', sans-serif; font-size: 0.8rem; cursor: pointer; transition: border-color 0.2s cubic-bezier(0.16,1,0.3,1), color 0.2s cubic-bezier(0.16,1,0.3,1), background 0.2s cubic-bezier(0.16,1,0.3,1); } .ds-chip:hover { border-color: #B3164F; color: #B3164F; background: #FBEEF3; } .ds-chip:focus-visible { outline: 2px solid #B3164F; outline-offset: 3px; border-radius: 999px; }"
+    },
+    {
+      "name": "Verdict Banner",
+      "kind": "custom",
+      "refersTo": "verdict-infringe",
+      "description": "Flat status band above the result, three states: infringement, clear, and undetermined. The undetermined state is the quietest on purpose.",
+      "html": "<div class=\"ds-verdict ds-verdict--infringe\"><span class=\"ds-verdict__label\"><svg class=\"ds-verdict__icon\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M12 9v4M12 17h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z\"/></svg>Possível infração identificada</span><span class=\"ds-verdict__conf\">confiança: alta</span></div><div class=\"ds-verdict ds-verdict--ok\"><span class=\"ds-verdict__label\"><svg class=\"ds-verdict__icon\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"m4 12 5.5 5.5L20 7\"/></svg>Nenhuma infração aparente identificada</span></div><div class=\"ds-verdict\"><span class=\"ds-verdict__label\"><svg class=\"ds-verdict__icon\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><circle cx=\"12\" cy=\"12\" r=\"9\"/><path d=\"M9.5 9.5a2.6 2.6 0 0 1 5 .9c0 1.7-2.5 2.1-2.5 3.6M12 17.5h.01\"/></svg>Não foi possível determinar automaticamente.</span></div>",
+      "css": ".ds-verdict { display: flex; align-items: center; justify-content: space-between; gap: 10px; font-family: 'IBM Plex Sans', sans-serif; font-weight: 600; font-size: 0.93rem; padding: 13px 18px; border-radius: 14px; margin-bottom: 12px; color: #16171B; } .ds-verdict--infringe { background: #FCEFEE; color: #A3231C; } .ds-verdict--ok { background: #EBF5EF; color: #14663F; } .ds-verdict__label { display: flex; align-items: center; gap: 9px; } .ds-verdict__icon { width: 17px; height: 17px; flex-shrink: 0; } .ds-verdict__conf { font-weight: 400; font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; white-space: nowrap; }"
+    },
+    {
+      "name": "Result Card",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "White hairline card holding labelled prose fields, with hairline-separated repeated rows.",
+      "html": "<div class=\"ds-card\"><span class=\"ds-card__label\">Dispositivos infringidos</span><div class=\"ds-row\"><div class=\"ds-row__k\">Lei nº 13.709/2018, Art. 7º</div><div class=\"ds-row__v\">Compartilhamento sem base legal nem consentimento do titular.</div></div><div class=\"ds-row\"><div class=\"ds-row__k\">Lei nº 13.709/2018, Art. 27</div><div class=\"ds-row__v\">Uso compartilhado depende de consentimento, salvo hipóteses de dispensa.</div></div></div>",
+      "css": ".ds-card { background: #FFFFFF; border: 1px solid #E2E2DD; border-radius: 14px; padding: 18px 20px; margin-bottom: 12px; font-family: 'IBM Plex Sans', sans-serif; } .ds-card__label { font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 0.09em; font-size: 0.72rem; color: #666A77; display: block; margin-bottom: 7px; } .ds-row { padding: 11px 0; border-top: 1px solid #E2E2DD; } .ds-row:first-of-type { border-top: none; padding-top: 0; } .ds-row__k { font-weight: 600; font-size: 0.9rem; color: #16171B; } .ds-row__v { color: #5A5E6B; font-size: 0.86rem; margin-top: 3px; }"
+    },
+    {
+      "name": "Area Rail Item",
+      "kind": "nav",
+      "refersTo": "rail-item",
+      "description": "Sticky rail button tracking the scroll sequence. Active takes the accent left rule and reveals its article count. Clickable to jump.",
+      "html": "<nav class=\"ds-rail\" aria-label=\"Áreas cobertas\"><button class=\"ds-railitem ds-is-active\" type=\"button\">Dados e internet<span class=\"ds-railcount\">119 artigos</span></button><button class=\"ds-railitem\" type=\"button\">Trabalho<span class=\"ds-railcount\">837 artigos</span></button><button class=\"ds-railitem\" type=\"button\">Consumo<span class=\"ds-railcount\">122 artigos</span></button></nav>",
+      "css": ".ds-rail { max-width: 280px; } .ds-railitem { display: block; width: 100%; text-align: left; background: none; border: none; border-left: 2px solid #E2E2DD; color: #666A77; font-family: 'IBM Plex Sans', sans-serif; font-size: 1.02rem; font-weight: 500; padding: 11px 0 11px 18px; cursor: pointer; transition: color 0.25s cubic-bezier(0.16,1,0.3,1), border-color 0.25s cubic-bezier(0.16,1,0.3,1); } .ds-railitem:hover { color: #5A5E6B; } .ds-railitem:focus-visible { outline: 2px solid #B3164F; outline-offset: 3px; border-radius: 4px; } .ds-railitem.ds-is-active { color: #16171B; border-left-color: #B3164F; font-weight: 600; } .ds-railcount { display: block; font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; letter-spacing: 0.06em; color: #666A77; margin-top: 2px; opacity: 0; transition: opacity 0.25s cubic-bezier(0.16,1,0.3,1); } .ds-railitem.ds-is-active .ds-railcount { opacity: 1; }"
+    },
+    {
+      "name": "Try This Situation Button",
+      "kind": "button",
+      "refersTo": "area-try",
+      "description": "Full-width recessed block inside an area panel. Pipes a real example back into the tool and submits it.",
+      "html": "<button class=\"ds-try\" type=\"button\"><span class=\"ds-try__label\">Testar esta situação</span><span class=\"ds-try__text\">“Uma empresa compartilhou a lista de e-mails dos clientes com um parceiro de marketing sem pedir consentimento.”</span></button>",
+      "css": ".ds-try { background: #F5F5F3; border: 1px solid #E2E2DD; border-radius: 14px; padding: 16px 18px; text-align: left; width: 100%; cursor: pointer; font-family: 'IBM Plex Sans', sans-serif; transition: border-color 0.2s cubic-bezier(0.16,1,0.3,1), background 0.2s cubic-bezier(0.16,1,0.3,1); } .ds-try:hover { border-color: #B3164F; background: #FBEEF3; } .ds-try:focus-visible { outline: 2px solid #B3164F; outline-offset: 3px; } .ds-try__label { display: block; font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.09em; color: #B3164F; margin-bottom: 7px; } .ds-try__text { display: block; color: #16171B; font-size: 0.92rem; line-height: 1.5; }"
+    },
+    {
+      "name": "Ruled Grid",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "The house grid pattern: 1px gaps over a hairline background inside one bordered, clipped container, so cells read as a ruled table rather than floating cards.",
+      "html": "<div class=\"ds-ruledgrid\"><div class=\"ds-cell\"><span class=\"ds-cell__name\">Busca densa</span><h3>Embeddings</h3><p>Similaridade de cosseno sobre um modelo multilingue local.</p></div><div class=\"ds-cell\"><span class=\"ds-cell__name\">Busca léxica</span><h3>BM25</h3><p>Captura o termo jurídico exato que precisa bater literalmente.</p></div><div class=\"ds-cell\"><span class=\"ds-cell__name\">Fusão</span><h3>Reciprocal Rank Fusion</h3><p>Combina os dois rankings num só antes de reordenar.</p></div></div>",
+      "css": ".ds-ruledgrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: #E2E2DD; border: 1px solid #E2E2DD; border-radius: 14px; overflow: hidden; font-family: 'IBM Plex Sans', sans-serif; } .ds-cell { background: #FFFFFF; padding: 22px 20px 24px; transition: background 0.2s cubic-bezier(0.16,1,0.3,1); } .ds-cell:hover { background: #F5F5F3; } .ds-cell__name { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: #B3164F; display: block; margin-bottom: 10px; } .ds-cell h3 { font-size: 1rem; font-weight: 600; line-height: 1.14; letter-spacing: -0.022em; margin: 0 0 6px; color: #16171B; } .ds-cell p { margin: 0; color: #5A5E6B; font-size: 0.86rem; line-height: 1.55; }"
+    },
+    {
+      "name": "Citation Block",
+      "kind": "card",
+      "refersTo": "cite",
+      "description": "A real retrieval excerpt with its law reference, its score in accent tabular numerals, and its chapter provenance.",
+      "html": "<article class=\"ds-cite\"><header class=\"ds-cite__head\"><span>LGPD, Art. 27</span><span class=\"ds-cite__score\">score -6.633</span></header><p class=\"ds-cite__text\">“A comunicação ou o uso compartilhado de dados pessoais de pessoa jurídica de direito público a pessoa de direito privado será informado à autoridade nacional e dependerá de consentimento do titular […]”</p><footer class=\"ds-cite__foot\">Capítulo IV · Seção I · Lei nº 13.709/2018</footer></article>",
+      "css": ".ds-cite { background: #FFFFFF; border: 1px solid #E2E2DD; border-radius: 12px; padding: 18px 20px; font-family: 'IBM Plex Sans', sans-serif; } .ds-cite__head { display: flex; justify-content: space-between; gap: 12px; font-family: 'JetBrains Mono', monospace; font-size: 0.76rem; margin-bottom: 10px; color: #16171B; } .ds-cite__score { color: #B3164F; font-variant-numeric: tabular-nums; } .ds-cite__text { margin: 0; color: #5A5E6B; font-size: 0.9rem; line-height: 1.6; } .ds-cite__foot { margin-top: 12px; font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; color: #666A77; }"
+    },
+    {
+      "name": "History Pill",
+      "kind": "button",
+      "refersTo": "history-fab",
+      "description": "The only fixed element on the page. Dark pill bottom right opening the history drawer, with an optional count badge.",
+      "html": "<button class=\"ds-fab\" type=\"button\" aria-expanded=\"false\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" aria-hidden=\"true\"><path d=\"M12 8v4l3 2\"/><circle cx=\"12\" cy=\"12\" r=\"9\"/></svg>Histórico<span class=\"ds-fab__count\">3</span></button>",
+      "css": ".ds-fab { display: inline-flex; align-items: center; gap: 8px; background: #16171B; border: none; border-radius: 999px; padding: 12px 19px; color: #FFFFFF; font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; cursor: pointer; box-shadow: 0 8px 20px -8px rgba(22,23,27,0.45); transition: background 0.2s cubic-bezier(0.16,1,0.3,1), box-shadow 0.2s cubic-bezier(0.16,1,0.3,1); } .ds-fab:hover { background: #B3164F; box-shadow: 0 12px 26px -10px rgba(22,23,27,0.55); } .ds-fab:focus-visible { outline: 2px solid #B3164F; outline-offset: 3px; } .ds-fab__count { background: #FFFFFF; color: #16171B; font-weight: 600; border-radius: 999px; font-size: 0.72rem; padding: 1px 7px; line-height: 1.5; }"
+    },
+    {
+      "name": "Destructive Clear Button",
+      "kind": "button",
+      "refersTo": "button-clear",
+      "description": "Two-step destructive control in the drawer footer. First click arms and relabels; blur disarms. Never destroys on a single click.",
+      "html": "<button class=\"ds-clear\" type=\"button\">Limpar tudo</button><button class=\"ds-clear ds-is-armed\" type=\"button\">Confirmar exclusão?</button>",
+      "css": ".ds-clear { display: block; width: 100%; margin-bottom: 8px; background: none; border: 1px solid #C9C9C2; border-radius: 999px; color: #5A5E6B; font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; padding: 10px; cursor: pointer; } .ds-clear:hover { color: #A3231C; border-color: #A3231C; } .ds-clear:focus-visible { outline: 2px solid #B3164F; outline-offset: 3px; } .ds-clear.ds-is-armed { color: #A3231C; border-color: #A3231C; background: #FCEFEE; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Official Gazette, Set in Plain Type",
+    "overview": "Ragis is a legal triage tool, and its credibility is the product. The world is therefore built like a well printed government document rather than like software: a white sheet, black text, hairline rules, and exactly one ink of color. Nothing on the page is trying to look impressive. Every surface either holds text or separates text from text.\n\nDepth is refused as a device. There are no floating cards, no glows, no textures, and no gradients of any kind in the stylesheet. Where a grid is needed, it is drawn as a ruled table: a rule-colored background showing through 1px gaps between white cells. Where a block needs to recede, it takes the single soft paper tone. Shadow appears only under the two objects that genuinely float over the sheet, the fixed history pill and the history drawer.\n\nThe page is also deliberately unchromed. There is no top navigation bar at all; the first viewport is a full-height white field with the input already waiting. The one moment of movement in the whole system is the coverage sequence, where seven panels of law fade in and out of focus against a sticky rail as the reader scrolls. That sequence is the signature; everything else holds still.",
+    "keyCharacteristics": [
+      "White paper ground, near-black ink, one deep magenta accent and nothing else",
+      "Zero gradients: every fill in the system is flat",
+      "Hairline rules do the work that shadows and cards do elsewhere",
+      "No fixed navigation; the only fixed element is a dark history pill bottom right",
+      "IBM Plex Sans for reading, JetBrains Mono for anything a machine measured",
+      "One scroll-driven sequence carries all the motion in the system"
+    ],
+    "rules": [
+      { "name": "The One Ink Rule", "body": "The system has exactly one accent. There is no secondary and no tertiary color. If a new surface seems to need a second accent, it needs a hairline or a soft paper tone instead.", "section": "colors" },
+      { "name": "The Flat Fill Rule", "body": "Every fill in this system is a flat color. No gradient, no glow, no texture, no tinted blur. This is an invariant, not a default. Audit test: grep gradient over the stylesheet must return zero.", "section": "colors" },
+      { "name": "The Hairline Before Shadow Rule", "body": "Separation is drawn, not lit. A 1px hairline, a rule-colored gap, or the soft paper tone resolves nearly every grouping problem. Shadow is reserved for objects that literally float.", "section": "colors" },
+      { "name": "The Mono Means Measured Rule", "body": "JetBrains Mono is only for facts a machine produced or a label naming a field: counts, scores, metric keys and values, uppercase section and field labels. It never sets a sentence.", "section": "typography" },
+      { "name": "The No Dash Rule", "body": "No em dashes and no en dashes appear anywhere in the prose of this product. Use a comma, a colon, or a full stop. Hyphens inside real technical names are deliberate and stay: cross-encoder, rank-bm25, sentence-transformers, top-k.", "section": "typography" },
+      { "name": "The One Display Rule", "body": "One display-size headline per page, in the first viewport. Sections below it start at headline size.", "section": "typography" },
+      { "name": "The Ruled Table Rule", "body": "Multi-cell grids are built as a 1px gap over a hairline-colored background, inside a single 1px hairline border with overflow hidden and a 14px radius. Cells are plain white with no border of their own. The result reads as one ruled table, not as a row of floating cards.", "section": "layout" },
+      { "name": "The No Chrome Rule", "body": "The page carries no top navigation bar, no sticky header, and no persistent side nav. Wayfinding happens through the scroll sequence and the section rail.", "section": "layout" },
+      { "name": "The Two Shadows Rule", "body": "Shadows belong only to elements with position fixed. Everything in the document flow is flat. All shadows are soft, downward, and heavily negative-spread; a hard offset shadow does not belong in this world.", "section": "elevation" },
+      { "name": "The Pressed Is A Pill Rule", "body": "If it takes a click, it is a pill or a circle. If it holds text to read, it is 14px. There is no square-cornered surface in this system and no radius above 26px that is not a full pill.", "section": "shapes" }
+    ],
+    "dos": [
+      "Do keep every fill flat. One color per surface, always.",
+      "Do build multi-cell grids as a 1px gap over a hairline background inside one bordered, clipped container, per The Ruled Table Rule.",
+      "Do reach for a hairline, the soft paper tone, or a border-color change before reaching for a shadow or a lift.",
+      "Do reserve JetBrains Mono for counts, scores, metric keys and uppercase field labels, and set all prose in IBM Plex Sans.",
+      "Do cap reading measure explicitly (42ch to 58ch for prose blocks, 680px for the question-and-answer column).",
+      "Do give every destructive action a two-step arm and confirm, and disarm it on blur.",
+      "Do author icons as inline SVG on a 24px viewBox using currentColor.",
+      "Do give every scroll or opacity effect a prefers-reduced-motion path that leaves the content at full strength.",
+      "Do write prose without em dashes or en dashes, keeping hyphens inside real technical names."
+    ],
+    "donts": [
+      "Don't add a gradient, glow, or texture anywhere. Zero is the current count and it is the target.",
+      "Don't introduce a second or third accent. One ink carries every emphasis in the system.",
+      "Don't add a fixed top navigation bar or a sticky header. The history pill is the only fixed control.",
+      "Don't put a shadow on anything in the document flow, and never a hard offset shadow anywhere.",
+      "Don't give ruled-grid cells their own borders or radii; the container owns both.",
+      "Don't set a square corner or a radius between 26px and a full pill.",
+      "Don't make the fade in the area sequence load-bearing for legibility; the text must read at 0.32 opacity and the sequence must survive a missing IntersectionObserver.",
+      "Don't style a weak number differently from a strong one in the metric readout."
+    ]
+  }
+}

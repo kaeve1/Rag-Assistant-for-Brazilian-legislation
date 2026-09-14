@@ -1,0 +1,12 @@
+.env
+__pycache__/
+*.pyc
+.venv/
+venv/
+data/index/
+logs/
+eval/results.json
+
+# scratch do scraping e capturas de review
+.firecrawl/
+.impeccable/review/

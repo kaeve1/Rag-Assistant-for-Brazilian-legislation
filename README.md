@@ -1,8 +1,119 @@
-# RAG - Legislação Brasileira
+# Ragis — RAG sobre a legislação federal brasileira
 
-Sistema de RAG (Retrieval-Augmented Generation) que recebe a descrição de uma
-situação e indica quais dispositivos legais ela pode infringir, usando busca
-híbrida (BM25 + embeddings) com reranking e o Gemini como modelo de análise.
+Descreva uma situação em português. O sistema recupera os artigos de lei
+realmente aplicáveis em **11 códigos federais (6.034 artigos)** e só então
+pede a análise ao modelo, preso ao que foi recuperado. A resposta cita lei e
+artigo verificáveis, e mostra os trechos consultados.
+
+![Tela inicial do Ragis](docs/01-inicio.jpg)
+
+---
+
+## Por que este projeto existe
+
+Modelos de linguagem erram direito de um jeito específico e perigoso: inventam
+número de artigo com naturalidade, não sabem dizer de onde tiraram a resposta e
+misturam redação revogada com a lei em vigor.
+
+Isso está medido. Dahl, Magesh, Suzgun e Ho (Stanford RegLab) testaram modelos
+com perguntas verificáveis sobre casos federais e encontraram **alucinação
+entre 58% (GPT-4) e 88% (Llama 2)**, além de constatarem que os modelos
+frequentemente **não sabem quando estão alucinando**.
+
+> Dahl, M., Magesh, V., Suzgun, M., Ho, D. E. (2024). *Large Legal Fictions:
+> Profiling Legal Hallucinations in Large Language Models.* Journal of Legal
+> Analysis, 16(1), 64–93. [arXiv:2401.01301](https://arxiv.org/abs/2401.01301)
+
+RAG é a resposta usual, e funciona, mas **não é bala de prata** — e o projeto
+assume isso explicitamente. A mesma equipe auditou as ferramentas jurídicas
+comerciais que se anunciam "hallucination-free" e mediu **17% a 33% de
+alucinação** no Lexis+ AI e no Westlaw AI-Assisted Research.
+
+> Magesh, V., Surani, F., Dahl, M., Suzgun, M., Manning, C. D., Ho, D. E.
+> (2024). *Hallucination-Free? Assessing the Reliability of Leading AI Legal
+> Research Tools.* Journal of Empirical Legal Studies.
+> [arXiv:2405.20362](https://arxiv.org/abs/2405.20362)
+
+Por isso a interface **nunca afirma ausência de infração**: ela relata o que a
+busca encontrou, e quando não encontra, diz que não encontrou — o que é
+diferente de dizer que a situação é legal.
+
+![Resposta com o artigo citado e os trechos de lei consultados](docs/02-resposta.jpg)
+
+---
+
+## Decisões de arquitetura, e a pesquisa por trás de cada uma
+
+O pipeline tem quatro estágios antes de qualquer geração. Cada um resolve uma
+falha conhecida do estágio anterior.
+
+![Pipeline e métricas](docs/04-pipeline.jpg)
+
+### 1. Busca densa — `paraphrase-multilingual-mpnet-base-v2`
+
+Quem descreve um problema não usa o vocabulário da lei: "fui mandado embora"
+precisa encontrar "dispensa sem justa causa". Embeddings de sentença resolvem
+paráfrase, rodam localmente e não custam por consulta.
+
+> Reimers, N., Gurevych, I. (2019). *Sentence-BERT: Sentence Embeddings using
+> Siamese BERT-Networks.* EMNLP. [arXiv:1908.10084](https://arxiv.org/abs/1908.10084)
+
+### 2. Busca léxica — `rank-bm25`
+
+Busca densa erra o termo exato. "Usucapião", "aviso prévio" e números de artigo
+precisam bater literalmente. BM25 continua sendo o baseline difícil de superar
+em recuperação léxica.
+
+> Robertson, S., Zaragoza, H. (2009). *The Probabilistic Relevance Framework:
+> BM25 and Beyond.* Foundations and Trends in Information Retrieval, 3(4).
+
+### 3. Fusão — Reciprocal Rank Fusion
+
+Os dois métodos acertam coisas diferentes, e seus scores estão em escalas que
+não se comparam. O RRF funde pela **posição** no ranking, o que dispensa
+calibrar pesos e, no paper original, supera Condorcet e métodos de learning to
+rank treinados.
+
+> Cormack, G. V., Clarke, C. L. A., Buettcher, S. (2009). *Reciprocal Rank
+> Fusion outperforms Condorcet and individual Rank Learning Methods.* SIGIR.
+
+### 4. Reranking — `unicamp-dl/mMiniLM-L6-v2-mmarco-v2`
+
+Bi-encoders codificam pergunta e documento separadamente, o que é rápido mas
+perde a interação entre os dois. Um cross-encoder lê os dois **juntos** e
+decide se aquele artigo responde àquela situação. É o maior ganho de precisão
+do pipeline e o estágio mais caro, por isso roda só sobre os candidatos.
+
+> Nogueira, R., Cho, K. (2019). *Passage Re-ranking with BERT.*
+> [arXiv:1901.04085](https://arxiv.org/abs/1901.04085)
+>
+> Bonifacio, L. et al. (2021). *mMARCO: A Multilingual Version of the MS MARCO
+> Passage Ranking Dataset.* [arXiv:2108.13897](https://arxiv.org/abs/2108.13897)
+> — o modelo de rerank usado aqui é treinado nesse corpus, em português.
+
+### 5. Geração — Gemini com schema de resposta
+
+A saída é JSON validado por schema, não texto livre: veredito, artigos citados
+e confiança chegam como campos. Isso permite à interface tratar cada caso, e
+principalmente **recusar uma conclusão** quando o modelo não tem base.
+
+O `top_k` é mantido enxuto (6) de propósito: contexto longo degrada a
+utilização da informação no meio da janela.
+
+> Liu, N. F. et al. (2023). *Lost in the Middle: How Language Models Use Long
+> Contexts.* TACL. [arXiv:2307.03172](https://arxiv.org/abs/2307.03172)
+
+### O conceito geral
+
+> Lewis, P. et al. (2020). *Retrieval-Augmented Generation for
+> Knowledge-Intensive NLP Tasks.* NeurIPS.
+> [arXiv:2005.11401](https://arxiv.org/abs/2005.11401)
+
+---
+
+## Cobertura
+
+![Áreas do direito cobertas](docs/03-cobertura.jpg)
 
 ## Fontes legais incluídas (6.034 artigos)
 
@@ -101,7 +212,12 @@ internet em runtime (só para chamar a API do Gemini).
 `eval/golden_set.jsonl` tem 18 situações rotuladas manualmente (LGPD, Marco
 Civil, CLT e casos sem infração) com a lei/artigo esperado. `eval/run_eval.py`
 roda o pipeline completo contra esse golden set e calcula métricas no estilo
-RAGAS:
+RAGAS, que separa a qualidade do **retrieval** da qualidade da **geração**:
+
+> Es, S., James, J., Espinosa-Anke, L., Schockaert, S. (2023). *RAGAS:
+> Automated Evaluation of Retrieval Augmented Generation.*
+> [arXiv:2309.15217](https://arxiv.org/abs/2309.15217)
+
 
 - **context_precision / context_recall / mrr** — qualidade do retrieval,
   calculadas diretamente contra os rótulos (sem LLM).

@@ -360,7 +360,7 @@ ul, ol { list-style: none; margin: 0; padding: 0; }
 .rail-scrim { display: none; }
 
 .app.is-collapsed { --rail-w: 0px; }
-.app.is-collapsed .rail { transform: translateX(-100%); overflow: hidden; }
+.app.is-collapsed .rail { display: none; }
 .app.is-collapsed .rail__open { display: flex; }
 
 .app__main { min-width: 0; padding-left: var(--rail-w); }
